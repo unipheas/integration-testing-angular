@@ -1,5 +1,5 @@
 import { HttpModule } from '@angular/http';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -30,13 +30,14 @@ describe('TodosComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should load todos from the server', () => {
+  it('should load todos from the server', fakeAsync(() => {
     const service = TestBed.get(TodoService);
     // fixture.debugElement.injector.get(TodoService);
-    spyOn(service, 'getTodos').and.returnValue(Observable.from([ [1, 2, 3] ]));
+    spyOn(service, 'getTodosPromise').and.returnValue(Promise.resolve([ 1, 2, 3 ]));
 
     fixture.detectChanges();
 
+    tick();
     expect(component.todos.length).toBe(3);
-  });
+  }));
 });
