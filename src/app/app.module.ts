@@ -13,8 +13,8 @@ import { VoterComponent } from './1-voter/voter.component';
 import { routes } from './app.routes';
 import { UsersComponent } from './users/users.component';
 import { GreeterComponent } from './greeter/greeter.component';
-// import { NavComponent } from './nav/nav.component';
 import { HighlightDirective } from './highlight.directive';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +25,8 @@ import { HighlightDirective } from './highlight.directive';
     UserDetailsComponent,
     VoterComponent,
     UsersComponent,
-    // NavComponent,
-    HighlightDirective
+    HighlightDirective,
+    NavComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
