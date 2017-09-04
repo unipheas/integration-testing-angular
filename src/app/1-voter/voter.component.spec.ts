@@ -25,8 +25,17 @@ describe('VoterComponent', () => {
     fixture.detectChanges();
 
     const de = fixture.debugElement.query(By.css('.vote-count'));
-    let el: HTMLElement = de.nativeElement;
+    const el: HTMLElement = de.nativeElement;
 
     expect(el.innerText).toContain('21');
+  });
+
+  it('should highlight the upvote button if I have upvote', () => {
+    component.myVote = 1;
+    fixture.detectChanges();
+
+    const de = fixture.debugElement.query(By.css('.glyphicon-menu-up'));
+
+    expect(de.classes['highlighted']).toBeTruthy();
   });
 });
